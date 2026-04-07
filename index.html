@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" style=""><head>
+<meta charset="utf-8">
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: white;
+    }
+    .slide-container {
+        width: 1280px;
+        height: 720px;
+        position: relative;
+        overflow: hidden;
+        background-color: white;
+    }
+    .slide-container * {
+        box-sizing: border-box;
+    }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<!-- Header -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; left: 64px; top: 32px; width: 1152px; height: 64px;" id="fabric-obj-0-1775576183984">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 28px; font-weight: 700; color: #1a1a1a; margin-bottom: 4px;">
+<span style="color: #2563eb;">Análisis por Línea de Negocio</span> | Estados de Resultados 2026
+</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; color: #64748b;">
+        Desglose de las principales líneas de negocio con análisis de tendencias mensuales y KPIs
+</div>
+</div>
+<!-- Panel 1: I+C -->
+<div data-object="true" data-object-type="shape" style="position: absolute; left: 64px; top: 110px; width: 374px; height: 260px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px;" id="fabric-obj-1-1775576183986">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+<div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; font-weight: 600; color: #1a1a1a;">I+C</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 11px; color: #64748b;">Ingeniería y Construcción</div>
+</div>
+<div style="background-color: #2563eb; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600;">
+            44%
+</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">Ingresos:</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #1a1a1a;">$67.2M</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">EBITDA:</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #1a1a1a;">$7.05M</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">Pico:</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #1a1a1a;">Julio ($11.6M)</div>
+</div>
+<div style="height: 100px; position: relative;">
+<canvas id="chartIC" width="305" height="90" style="display: block; box-sizing: border-box; height: 100px; width: 339.8px;"></canvas>
+</div>
+</div>
+<!-- Panel 2: Hotelería -->
+<div data-object="true" data-object-type="shape" style="position: absolute; left: 453px; top: 110px; width: 374px; height: 260px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px;" id="fabric-obj-2-1775576183987">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+<div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; font-weight: 600; color: #1a1a1a;">Hotelería</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 11px; color: #64748b;">Operaciones Hotel</div>
+</div>
+<div style="background-color: #10b981; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600;">
+            20%
+</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">Ingresos:</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #1a1a1a;">$29.9M</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">EBITDA:</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #1a1a1a;">$13.95M</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">Estabilidad:</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #10b981;">Alta</div>
+</div>
+<div style="height: 100px; position: relative;">
+<canvas id="chartHotel" width="305" height="90" style="display: block; box-sizing: border-box; height: 100px; width: 339.8px;"></canvas>
+</div>
+</div>
+<!-- Panel 3: Habitacional -->
+<div data-object="true" data-object-type="shape" style="position: absolute; left: 842px; top: 110px; width: 374px; height: 260px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px;" id="fabric-obj-3-1775576183987">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+<div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; font-weight: 600; color: #1a1a1a;">Habitacional</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 11px; color: #64748b;">Proyectos Residenciales</div>
+</div>
+<div style="background-color: #f59e0b; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600;">
+            17%
+</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">Ingresos:</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #1a1a1a;">$25.5M</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">EBITDA:</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #1a1a1a;">$1.6M</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">Q4:</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #f59e0b;">Fuerte</div>
+</div>
+<div style="height: 100px; position: relative;">
+<canvas id="chartHabitacional" width="305" height="90" style="display: block; box-sizing: border-box; height: 100px; width: 339.8px;"></canvas>
+</div>
+</div>
+<!-- Panel 4: Servicios Hoteleros -->
+<div data-object="true" data-object-type="shape" style="position: absolute; left: 64px; top: 385px; width: 374px; height: 260px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px;" id="fabric-obj-4-1775576183988">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+<div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; font-weight: 600; color: #1a1a1a;">Servicios Hoteleros</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 11px; color: #64748b;">Operaciones de Servicios</div>
+</div>
+<div style="background-color: #8b5cf6; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600;">
+            12%
+</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">Ingresos:</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #1a1a1a;">$18.96M</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">EBITDA:</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #1a1a1a;">$6.69M</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">Recuperación:</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #10b981;">Gradual</div>
+</div>
+<div style="height: 100px; position: relative;">
+<canvas id="chartServicios" width="305" height="90" style="display: block; box-sizing: border-box; height: 100px; width: 339.8px;"></canvas>
+</div>
+</div>
+<!-- Panel 5: Rental -->
+<div data-object="true" data-object-type="shape" style="position: absolute; left: 453px; top: 385px; width: 374px; height: 260px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px;" id="fabric-obj-5-1775576183988">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+<div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; font-weight: 600; color: #1a1a1a;">Rental</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 11px; color: #64748b;">Alquiler de Equipos</div>
+</div>
+<div style="background-color: #ef4444; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600;">
+            2.2%
+</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">Ingresos:</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #1a1a1a;">$3.37M</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">EBITDA:</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #1a1a1a;">$1.53M</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">Estabilidad:</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #10b981;">Alta</div>
+</div>
+<div style="height: 100px; position: relative;">
+<canvas id="chartRental" width="305" height="90" style="display: block; box-sizing: border-box; height: 100px; width: 339.8px;"></canvas>
+</div>
+</div>
+<!-- Panel 6: Venta Modular -->
+<div data-object="true" data-object-type="shape" style="position: absolute; left: 842px; top: 385px; width: 374px; height: 260px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px;" id="fabric-obj-6-1775576183988">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+<div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; font-weight: 600; color: #1a1a1a;">Venta Modular</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 11px; color: #64748b;">Venta de Módulos</div>
+</div>
+<div style="background-color: #f59e0b; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600;">
+            2.3%
+</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">Ingresos:</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #1a1a1a;">$3.47M</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">EBITDA:</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #ef4444;">-$25.7K</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">Estado:</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #ef4444;">Pérdida</div>
+</div>
+<div style="height: 100px; position: relative;">
+<canvas id="chartModular" width="305" height="90" style="display: block; box-sizing: border-box; height: 100px; width: 339.8px;"></canvas>
+</div>
+</div>
+<script>
+    const chartOptions = (color, precision = 1) => ({
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: { display: false },
+            datalabels: {
+                display: true,
+                align: 'top',
+                offset: 2,
+                formatter: (value) => value > 0 || value < 0 ? value.toFixed(precision) + 'M' : '',
+                font: { size: 9, weight: '600' },
+                color: '#1a1a1a'
+            }
+        },
+        scales: {
+            x: { 
+                grid: { display: false },
+                ticks: { font: { size: 9 } }
+            },
+            y: { 
+                grid: { display: true, color: '#f1f5f9' },
+                ticks: { display: false }
+            }
+        }
+    });
+ 
+    // Chart.js configuration for I+C
+    new Chart(document.getElementById('chartIC').getContext('2d'), {
+        type: 'line',
+        data: {
+            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            datasets: [{
+                data: [1.97, 2.47, 2.52, 2.33, 4.21, 9.41, 11.57, 9.86, 8.06, 6.38, 4.02, 4.41],
+                borderColor: '#2563eb',
+                backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                fill: true,
+                tension: 0.4,
+                pointRadius: 3,
+                pointBackgroundColor: '#2563eb'
+            }]
+        },
+        options: chartOptions('#2563eb'),
+        plugins: [ChartDataLabels]
+    });
+ 
+    // Chart.js configuration for Hotelería
+    new Chart(document.getElementById('chartHotel').getContext('2d'), {
+        type: 'line',
+        data: {
+            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            datasets: [{
+                data: [2.54, 2.27, 2.59, 2.26, 2.27, 2.53, 2.53, 2.38, 2.51, 2.63, 2.61, 2.78],
+                borderColor: '#10b981',
+                backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                fill: true,
+                tension: 0.4,
+                pointRadius: 3,
+                pointBackgroundColor: '#10b981'
+            }]
+        },
+        options: chartOptions('#10b981'),
+        plugins: [ChartDataLabels]
+    });
+ 
+    // Chart.js configuration for Habitacional
+    new Chart(document.getElementById('chartHabitacional').getContext('2d'), {
+        type: 'line',
+        data: {
+            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            datasets: [{
+                data: [1.25, 0.97, 0.70, 1.26, 1.45, 1.58, 1.67, 1.16, 2.97, 4.52, 4.86, 3.11],
+                borderColor: '#f59e0b',
+                backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                fill: true,
+                tension: 0.4,
+                pointRadius: 3,
+                pointBackgroundColor: '#f59e0b'
+            }]
+        },
+        options: chartOptions('#f59e0b'),
+        plugins: [ChartDataLabels]
+    });
+ 
+    // Chart.js configuration for Servicios Hoteleros
+    new Chart(document.getElementById('chartServicios').getContext('2d'), {
+        type: 'line',
+        data: {
+            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            datasets: [{
+                data: [2.04, 1.95, 2.28, 1.42, 1.32, 1.66, 1.49, 1.49, 1.34, 1.30, 1.19, 1.48],
+                borderColor: '#8b5cf6',
+                backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                fill: true,
+                tension: 0.4,
+                pointRadius: 3,
+                pointBackgroundColor: '#8b5cf6'
+            }]
+        },
+        options: chartOptions('#8b5cf6'),
+        plugins: [ChartDataLabels]
+    });
+ 
+    // Chart.js configuration for Rental
+    new Chart(document.getElementById('chartRental').getContext('2d'), {
+        type: 'line',
+        data: {
+            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            datasets: [{
+                data: [0.60, 0.31, 0.24, 0.24, 0.24, 0.24, 0.24, 0.24, 0.25, 0.25, 0.25, 0.26],
+                borderColor: '#ef4444',
+                backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                fill: true,
+                tension: 0.4,
+                pointRadius: 3,
+                pointBackgroundColor: '#ef4444'
+            }]
+        },
+        options: chartOptions('#ef4444', 2),
+        plugins: [ChartDataLabels]
+    });
+ 
+    // Chart.js configuration for Venta Modular
+    new Chart(document.getElementById('chartModular').getContext('2d'), {
+        type: 'line',
+        data: {
+            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            datasets: [{
+                data: [0.81, 0.16, 0.35, 0.25, 0.35, 0, 0.35, 0.25, 0.35, 0.25, 0.10, 0.25],
+                borderColor: '#f59e0b',
+                backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                fill: true,
+                tension: 0.4,
+                pointRadius: 3,
+                pointBackgroundColor: '#f59e0b'
+            }]
+        },
+        options: chartOptions('#f59e0b'),
+        plugins: [ChartDataLabels]
+    });
+</script>
+</div>
+ 
+</body></html>
