@@ -1,678 +1,337 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light" style=""><head>
+<html data-theme="light" lang="es" style=""><head>
 <meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Tabla Comparativa Detallada de Ejecutivos</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Roboto:wght@400;500&display=swap%22 rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
 <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
     body {
         margin: 0;
         padding: 0;
         overflow: hidden;
-        background-color: white;
+        background: #ffffff;
+        font-family: 'Montserrat', sans-serif;
     }
     .slide-container {
+        position: relative;
         width: 1280px;
         height: 720px;
-        position: relative;
         overflow: hidden;
-        background-color: white;
+        background: #ffffff;
     }
-    .slide-container * {
-        box-sizing: border-box;
+    .header {
+        position: absolute;
+        top: 30px;
+        left: 40px;
+        width: 1200px;
+        height: 70px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        z-index: 10;
     }
-</style>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
-</head>
-<body style="user-select: none;">
-<div class="slide-container">
-<!-- Header -->
-<div data-object="true" data-object-type="textbox" style="position: absolute; left: 64px; top: 32px; width: 1152px; height: 64px;" id="fabric-obj-0-1775576183984">
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 28px; font-weight: 700; color: #1a1a1a; margin-bottom: 4px;">
-<span style="color: #2563eb;">Análisis por Línea de Negocio</span> | Estados de Resultados 2026
-</div>
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; color: #64748b;">
-        Desglose de las principales líneas de negocio con análisis de tendencias mensuales y KPIs
-</div>
-</div>
-<!-- Panel 1: I+C -->
-<div data-object="true" data-object-type="shape" style="position: absolute; left: 64px; top: 110px; width: 374px; height: 260px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px;" id="fabric-obj-1-1775576183986">
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-<div>
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; font-weight: 600; color: #1a1a1a;">I+C</div>
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 11px; color: #64748b;">Ingeniería y Construcción</div>
-</div>
-<div style="background-color: #2563eb; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600;">
-            44%
-</div>
-</div>
-<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">Ingresos:</div>
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #1a1a1a;">$67.2M</div>
-</div>
-<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">EBITDA:</div>
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #1a1a1a;">$7.05M</div>
-</div>
-<div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">Pico:</div>
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #1a1a1a;">Julio ($11.6M)</div>
-</div>
-<div style="height: 100px; position: relative;">
-<canvas id="chartIC" width="305" height="90" style="display: block; box-sizing: border-box; height: 100px; width: 339.8px;"></canvas>
-</div>
-</div>
-<!-- Panel 2: Hotelería -->
-<div data-object="true" data-object-type="shape" style="position: absolute; left: 453px; top: 110px; width: 374px; height: 260px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px;" id="fabric-obj-2-1775576183987">
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-<div>
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; font-weight: 600; color: #1a1a1a;">Hotelería</div>
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 11px; color: #64748b;">Operaciones Hotel</div>
-</div>
-<div style="background-color: #10b981; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600;">
-            20%
-</div>
-</div>
-<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">Ingresos:</div>
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #1a1a1a;">$29.9M</div>
-</div>
-<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">EBITDA:</div>
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #1a1a1a;">$13.95M</div>
-</div>
-<div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">Estabilidad:</div>
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #10b981;">Alta</div>
-</div>
-<div style="height: 100px; position: relative;">
-<canvas id="chartHotel" width="305" height="90" style="display: block; box-sizing: border-box; height: 100px; width: 339.8px;"></canvas>
-</div>
-</div>
-<!-- Panel 3: Habitacional -->
-<div data-object="true" data-object-type="shape" style="position: absolute; left: 842px; top: 110px; width: 374px; height: 260px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px;" id="fabric-obj-3-1775576183987">
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-<div>
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; font-weight: 600; color: #1a1a1a;">Habitacional</div>
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 11px; color: #64748b;">Proyectos Residenciales</div>
-</div>
-<div style="background-color: #f59e0b; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600;">
-            17%
-</div>
-</div>
-<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">Ingresos:</div>
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #1a1a1a;">$25.5M</div>
-</div>
-<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">EBITDA:</div>
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #1a1a1a;">$1.6M</div>
-</div>
-<div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">Q4:</div>
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #f59e0b;">Fuerte</div>
-</div>
-<div style="height: 100px; position: relative;">
-<canvas id="chartHabitacional" width="305" height="90" style="display: block; box-sizing: border-box; height: 100px; width: 339.8px;"></canvas>
-</div>
-</div>
-<!-- Panel 4: Servicios Hoteleros -->
-<div data-object="true" data-object-type="shape" style="position: absolute; left: 64px; top: 385px; width: 374px; height: 260px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px;" id="fabric-obj-4-1775576183988">
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-<div>
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; font-weight: 600; color: #1a1a1a;">Servicios Hoteleros</div>
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 11px; color: #64748b;">Operaciones de Servicios</div>
-</div>
-<div style="background-color: #8b5cf6; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600;">
-            12%
-</div>
-</div>
-<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">Ingresos:</div>
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #1a1a1a;">$18.96M</div>
-</div>
-<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">EBITDA:</div>
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #1a1a1a;">$6.69M</div>
-</div>
-<div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">Recuperación:</div>
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #10b981;">Gradual</div>
-</div>
-<div style="height: 100px; position: relative;">
-<canvas id="chartServicios" width="305" height="90" style="display: block; box-sizing: border-box; height: 100px; width: 339.8px;"></canvas>
-</div>
-</div>
-<!-- Panel 5: Rental -->
-<div data-object="true" data-object-type="shape" style="position: absolute; left: 453px; top: 385px; width: 374px; height: 260px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px;" id="fabric-obj-5-1775576183988">
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-<div>
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; font-weight: 600; color: #1a1a1a;">Rental</div>
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 11px; color: #64748b;">Alquiler de Equipos</div>
-</div>
-<div style="background-color: #ef4444; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600;">
-            2.2%
-</div>
-</div>
-<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">Ingresos:</div>
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #1a1a1a;">$3.37M</div>
-</div>
-<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">EBITDA:</div>
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #1a1a1a;">$1.53M</div>
-</div>
-<div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">Estabilidad:</div>
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #10b981;">Alta</div>
-</div>
-<div style="height: 100px; position: relative;">
-<canvas id="chartRental" width="305" height="90" style="display: block; box-sizing: border-box; height: 100px; width: 339.8px;"></canvas>
-</div>
-</div>
-<!-- Panel 6: Venta Modular -->
-<div data-object="true" data-object-type="shape" style="position: absolute; left: 842px; top: 385px; width: 374px; height: 260px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px;" id="fabric-obj-6-1775576183988">
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-<div>
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; font-weight: 600; color: #1a1a1a;">Venta Modular</div>
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 11px; color: #64748b;">Venta de Módulos</div>
-</div>
-<div style="background-color: #f59e0b; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600;">
-            2.3%
-</div>
-</div>
-<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">Ingresos:</div>
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #1a1a1a;">$3.47M</div>
-</div>
-<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">EBITDA:</div>
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #ef4444;">-$25.7K</div>
-</div>
-<div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">Estado:</div>
-<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #ef4444;">Pérdida</div>
-</div>
-<div style="height: 100px; position: relative;">
-<canvas id="chartModular" width="305" height="90" style="display: block; box-sizing: border-box; height: 100px; width: 339.8px;"></canvas>
-</div>
-</div>
-<script>
-    const chartOptions = (color, precision = 1) => ({
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            legend: { display: false },
-            datalabels: {
-                display: true,
-                align: 'top',
-                offset: 2,
-                formatter: (value) => value > 0 || value < 0 ? value.toFixed(precision) + 'M' : '',
-                font: { size: 9, weight: '600' },
-                color: '#1a1a1a'
-            }
-        },
-        scales: {
-            x: { 
-                grid: { display: false },
-                ticks: { font: { size: 9 } }
-            },
-            y: { 
-                grid: { display: true, color: '#f1f5f9' },
-                ticks: { display: false }
-            }
-        }
-    });
+    .title-section {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    .title-icon {
+        width: 54px;
+        height: 54px;
+        background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+    }
+    .title-icon i {
+        color: white;
+        font-size: 24px;
+    }
+    .title-text {
+        color: #1e293b;
+        font-size: 32px;
+        font-weight: 700;
+        line-height: 1.1;
+    }
+    .title-sub {
+        color: #64748b;
+        font-size: 16px;
+        margin-top: 4px;
+        font-weight: 500;
+    }
+    .main-content {
+        position: absolute;
+        top: 125px;
+        left: 40px;
+        width: 1200px;
+        height: 560px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    .table-container {
+        background: white;
+        border-radius: 16px;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        overflow: hidden;
+        width: 100%;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+        table-layout: fixed;
+    }
+    th {
+        background: #f8fafc;
+        color: #475569;
+        font-weight: 700;
+        text-align: center;
+        padding: 14px 6px;
+        border-bottom: 2px solid #e2e8f0;
+        border-right: 1px solid #e2e8f0;
+        text-transform: uppercase;
+        font-size: 10.5px;
+        letter-spacing: 0.5px;
+        word-wrap: break-word;
+    }
  
-    // Chart.js configuration for I+C
-    new Chart(document.getElementById('chartIC').getContext('2d'), {
-        type: 'line',
-        data: {
-            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-            datasets: [{
-                data: [1.97, 2.47, 2.52, 2.33, 4.21, 9.41, 11.57, 9.86, 8.06, 6.38, 4.02, 4.41],
-                borderColor: '#2563eb',
-                backgroundColor: 'rgba(37, 99, 235, 0.1)',
-                fill: true,
-                tension: 0.4,
-                pointRadius: 3,
-                pointBackgroundColor: '#2563eb'
-            }]
-        },
-        options: chartOptions('#2563eb'),
-        plugins: [ChartDataLabels]
-    });
+    th:last-child {
+        border-right: none;
+    }
+    th.col-exec {
+        text-align: left;
+        padding-left: 24px;
+        width: 200px;
+        background: #f8fafc;
+    }
+    td {
+        padding: 14px 6px;
+        border-bottom: 1px solid #f1f5f9;
+        border-right: 1px solid #f1f5f9;
+        color: #1e293b;
+        text-align: center;
+        font-weight: 500;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
  
-    // Chart.js configuration for Hotelería
-    new Chart(document.getElementById('chartHotel').getContext('2d'), {
-        type: 'line',
-        data: {
-            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-            datasets: [{
-                data: [2.54, 2.27, 2.59, 2.26, 2.27, 2.53, 2.53, 2.38, 2.51, 2.63, 2.61, 2.78],
-                borderColor: '#10b981',
-                backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                fill: true,
-                tension: 0.4,
-                pointRadius: 3,
-                pointBackgroundColor: '#10b981'
-            }]
-        },
-        options: chartOptions('#10b981'),
-        plugins: [ChartDataLabels]
-    });
- 
-    // Chart.js configuration for Habitacional
-    new Chart(document.getElementById('chartHabitacional').getContext('2d'), {
-        type: 'line',
-        data: {
-            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-            datasets: [{
-                data: [1.25, 0.97, 0.70, 1.26, 1.45, 1.58, 1.67, 1.16, 2.97, 4.52, 4.86, 3.11],
-                borderColor: '#f59e0b',
-                backgroundColor: 'rgba(245, 158, 11, 0.1)',
-                fill: true,
-                tension: 0.4,
-                pointRadius: 3,
-                pointBackgroundColor: '#f59e0b'
-            }]
-        },
-        options: chartOptions('#f59e0b'),
-        plugins: [ChartDataLabels]
-    });
- 
-    // Chart.js configuration for Servicios Hoteleros
-    new Chart(document.getElementById('chartServicios').getContext('2d'), {
-        type: 'line',
-        data: {
-            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-            datasets: [{
-                data: [2.04, 1.95, 2.28, 1.42, 1.32, 1.66, 1.49, 1.49, 1.34, 1.30, 1.19, 1.48],
-                borderColor: '#8b5cf6',
-                backgroundColor: 'rgba(139, 92, 246, 0.1)',
-                fill: true,
-                tension: 0.4,
-                pointRadius: 3,
-                pointBackgroundColor: '#8b5cf6'
-            }]
-        },
-        options: chartOptions('#8b5cf6'),
-        plugins: [ChartDataLabels]
-    });
- 
-    // Chart.js configuration for Rental
-    new Chart(document.getElementById('chartRental').getContext('2d'), {
-        type: 'line',
-        data: {
-            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-            datasets: [{
-                data: [0.60, 0.31, 0.24, 0.24, 0.24, 0.24, 0.24, 0.24, 0.25, 0.25, 0.25, 0.26],
-                borderColor: '#ef4444',
-                backgroundColor: 'rgba(239, 68, 68, 0.1)',
-                fill: true,
-                tension: 0.4,
-                pointRadius: 3,
-                pointBackgroundColor: '#ef4444'
-            }]
-        },
-        options: chartOptions('#ef4444', 2),
-        plugins: [ChartDataLabels]
-    });
- 
-    // Chart.js configuration for Venta Modular
-    new Chart(document.getElementById('chartModular').getContext('2d'), {
-        type: 'line',
-        data: {
-            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-            datasets: [{
-                data: [0.81, 0.16, 0.35, 0.25, 0.35, 0, 0.35, 0.25, 0.35, 0.25, 0.10, 0.25],
-                borderColor: '#f59e0b',
-                backgroundColor: 'rgba(245, 158, 11, 0.1)',
-                fill: true,
-                tension: 0.4,
-                pointRadius: 3,
-                pointBackgroundColor: '#f59e0b'
-            }]
-        },
-        options: chartOptions('#f59e0b'),
-        plugins: [ChartDataLabels]
-    });
-</script>
-</div>
-
-
-
-
-
-
-
-    <!DOCTYPE html>
-<html lang="es" data-theme="light" style=""><head>
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Análisis Financiero EE.RR. 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500&display=swap%22 rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
-<style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background: #f5f5f5;
-            font-family: 'Montserrat', sans-serif;
-        }
-        .slide-container {
-            position: relative;
-            width: 1280px;
-            height: 720px;
-            overflow: hidden;
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
-        }
-        .background-pattern {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(34, 197, 94, 0.05) 0%, transparent 50%);
-            opacity: 0.5;
-        }
-        .grid-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            opacity: 0.3;
-        }
-        .main-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            max-width: 1200px;
-            z-index: 10;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .header-section {
-            text-align: center;
-            margin-bottom: 40px;
-            width: 100%;
-        }
-        .company-logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-        .logo-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
-        }
-        .logo-icon i {
-            color: white;
-            font-size: 28px;
-        }
-        .logo-text {
-            color: #1f2937;
-            font-size: 24px;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-        .logo-text span {
-            color: #2563eb;
-            font-weight: 800;
-        }
-        .main-title {
-            font-size: 48px;
-            font-weight: 800;
-            color: #1f2937;
-            margin-bottom: 15px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            letter-spacing: 0.5px;
-        }
-        .subtitle {
-            font-size: 20px;
-            color: #4b5563;
-            font-weight: 400;
-            margin-bottom: 30px;
-        }
-        .highlight-box {
-            background: rgba(255, 255, 255, 0.95);
-            border: 2px solid #e5e7eb;
-            border-radius: 12px;
-            padding: 15px 40px;
-            display: inline-flex;
-            align-items: center;
-            gap: 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-        }
-        .highlight-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(59, 130, 246, 0.1);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .highlight-icon i {
-            color: #2563eb;
-            font-size: 24px;
-        }
-        .highlight-text {
-            color: #374151;
-            font-size: 16px;
-            font-weight: 600;
-        }
-        .highlight-value {
-            color: #2563eb;
-            font-size: 20px;
-            font-weight: 800;
-        }
-        .stats-row {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-            width: 100%;
-        }
-        .stat-card {
-            background: rgba(255, 255, 255, 0.95);
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
-            padding: 25px 10px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            width: 230px; /* Slightly wider to prevent text overflow */
-            flex-shrink: 0;
-        }
-        .stat-value {
-            font-size: 32px;
-            font-weight: 700;
-            color: #1f2937;
-            margin-bottom: 8px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .stat-label {
-            font-size: 11px;
-            color: #6b7280;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-        }
-        .stat-change {
-            font-size: 14px;
-            color: #10b981;
-            font-weight: 600;
-        }
-        .stat-change.negative {
-            color: #ef4444;
-        }
-        .bottom-info {
-            position: absolute;
-            bottom: 30px;
-            left: 50px;
-            right: 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .info-left {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-        }
-        .info-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #4b5563;
-            font-size: 14px;
-        }
-        .info-item i {
-            color: #2563eb;
-        }
-        .info-right {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        .date-badge {
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            border-radius: 20px;
-            padding: 8px 16px;
-            color: #1f2937;
-            font-size: 14px;
-            font-weight: 500;
-        }
-        .footer-text {
-            color: #6b7280;
-            font-size: 12px;
-        }
-        .floating-elements {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            pointer-events: none;
-        }
-        .floating-circle {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(59, 130, 246, 0.05);
-            animation: float 8s ease-in-out infinite;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) scale(1); }
-            50% { transform: translateY(-30px) scale(1.1); }
-        }
+    td:last-child {
+        border-right: none;
+    }
+    td.col-exec {
+        text-align: left;
+        padding-left: 24px;
+        font-weight: 700;
+        background: #ffffff;
+        white-space: normal;
+        line-height: 1.2;
+    }
+    tr:last-child td {
+        border-bottom: none;
+        background: #f8fafc;
+        font-weight: 800;
+    }
+    .trend-up {
+        color: #16a34a;
+        font-size: 11px;
+        margin-left: 4px;
+    }
+    .trend-down {
+        color: #ef4444;
+        font-size: 11px;
+        margin-left: 4px;
+    }
+    .trend-stable {
+        color: #94a3b8;
+        font-size: 11px;
+        margin-left: 4px;
+    }
+    .highlight-cell {
+        background: rgba(59, 130, 246, 0.05);
+        color: #1e40af;
+        font-weight: 700;
+    }
+    .badge-alert {
+        background: #fef2f2;
+        color: #ef4444;
+        padding: 3px 8px;
+        border-radius: 6px;
+        font-weight: 700;
+        font-size: 12px;
+        border: 1px solid #fecaca;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .badge-success {
+        background: #f0fdf4;
+        color: #16a34a;
+        padding: 3px 8px;
+        border-radius: 6px;
+        font-weight: 700;
+        font-size: 12px;
+        border: 1px solid #bbf7d0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .col-group-header {
+        border-left: 1px solid #cbd5e1;
+    }
+    .legend-container {
+        display: flex;
+        justify-content: flex-end;
+        gap: 25px;
+        padding-right: 15px;
+        margin-top: 10px;
+    }
+    .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        color: #64748b;
+        font-weight: 500;
+    }
+    .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+    }
+    .dot.green { background: #22c55e; }
+    .dot.red { background: #ef4444; }
+    .dot.blue { background: #3b82f6; }
 </style>
 </head>
-<body style="user-select: none;">
+<body style="">
 <div class="slide-container">
-<div class="background-pattern"></div>
-<div class="grid-overlay"></div>
-<div class="floating-elements">
-<div class="floating-circle" style="width: 120px; height: 120px; top: 10%; left: 8%; animation-delay: 0s;"></div>
-<div class="floating-circle" style="width: 100px; height: 100px; top: 15%; right: 12%; animation-delay: 1.5s;"></div>
-<div class="floating-circle" style="width: 150px; height: 150px; bottom: 15%; left: 18%; animation-delay: 3s;"></div>
-</div>
-<div class="main-content">
-<div class="header-section">
-<div class="company-logo">
-<div class="logo-icon">
+<div class="header">
+<div class="title-section">
+<div class="title-icon">
 <i class="fas fa-chart-line"></i>
 </div>
-<div class="logo-text">FINANZAS<span> CORP</span></div>
-</div>
-<h1 class="main-title">Análisis Financiero EE.RR. 2026</h1>
-<p class="subtitle">Estados de Resultados 2026 (REAL + FCST) en CLP - Tendencias, desviaciones y oportunidades</p>
-<div class="highlight-box">
-<div class="highlight-icon">
-<i class="fas fa-chart-pie"></i>
-</div>
-<div style="text-align: left;">
-<div class="highlight-text">Ingresos Totales 2026</div>
-<div class="highlight-value">$152.875M</div>
+<div>
+<div class="title-text">Tabla Comparativa Detallada de Ejecutivos</div>
+<div class="title-sub">Consolidado de KPIs Comerciales (2S 2025 vs YTD 2026)</div>
 </div>
 </div>
 </div>
-<div class="stats-row">
-<div class="stat-card" data-object="true" id="fabric-obj-0-1775575910706" contenteditable="true" style="cursor: text; outline: none; caret-color: rgb(0, 0, 0); user-select: text;">
-<div class="stat-value">$26.99M</div>
-<div class="stat-label">EBITDA</div>
-<div class="stat-change">+17.7%</div>
+<div class="main-content">
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th class="col-exec" rowspan="2">Ejecutivo</th>
+<th colspan="3">Volumen Comercial</th>
+<th class="col-group-header" colspan="2">Adquisición (Clientes Nuevos)</th>
+<th class="col-group-header" colspan="2">Retención (Meses Prom.)</th>
+<th class="col-group-header" colspan="2">Valor (Pricing)</th>
+</tr>
+<tr>
+<th>Clientes</th>
+<th>Contratos</th>
+<th>Ingresos ($M)</th>
+<th class="col-group-header">2S 2025</th>
+<th>YTD 2026</th>
+<th class="col-group-header">2025</th>
+<th>2026</th>
+<th class="col-group-header">2S 2025</th>
+<th>2026</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="col-exec">Mauricio Ortiz</td>
+<td>33</td>
+<td>63</td>
+<td class="highlight-cell">$129.6</td>
+<td class="col-group-header">9</td>
+<td>3 <i class="fas fa-arrow-down trend-down"></i></td>
+<td class="col-group-header">7</td>
+<td><span class="badge-success">10</span> <i class="fas fa-arrow-up trend-up"></i></td>
+<td class="col-group-header">4.2</td>
+<td>3.9 <i class="fas fa-arrow-down trend-down"></i></td>
+</tr>
+<tr>
+<td class="col-exec">Katryna Moncada</td>
+<td><span class="badge-success">82</span></td>
+<td><span class="badge-success">161</span></td>
+<td class="highlight-cell">$83.6</td>
+<td class="col-group-header">25</td>
+<td>9 <i class="fas fa-arrow-down trend-down"></i></td>
+<td class="col-group-header">6</td>
+<td>6 <i class="fas fa-minus trend-stable"></i></td>
+<td class="col-group-header">4.4</td>
+<td>4.4 <i class="fas fa-minus trend-stable"></i></td>
+</tr>
+<tr>
+<td class="col-exec">Jean Pierre</td>
+<td>8</td>
+<td>15</td>
+<td>$10.6</td>
+<td class="col-group-header">4</td>
+<td>4 <i class="fas fa-minus trend-stable"></i></td>
+<td class="col-group-header">5</td>
+<td>4 <i class="fas fa-arrow-down trend-down"></i></td>
+<td class="col-group-header">3.6</td>
+<td><span class="badge-success">5.0</span> <i class="fas fa-arrow-up trend-up"></i></td>
+</tr>
+<tr>
+<td class="col-exec">Geraldine Salazar</td>
+<td>24</td>
+<td>26</td>
+<td>$12.3</td>
+<td class="col-group-header">20</td>
+<td><span class="badge-alert">0</span> <i class="fas fa-arrow-down trend-down"></i></td>
+<td class="col-group-header">6</td>
+<td><span class="badge-alert">0</span> <i class="fas fa-arrow-down trend-down"></i></td>
+<td class="col-group-header">4.4</td>
+<td><span class="badge-alert">0.0</span> <i class="fas fa-arrow-down trend-down"></i></td>
+</tr>
+<tr>
+<td class="col-exec">Francisco Gil</td>
+<td>3</td>
+<td>4</td>
+<td>$2.1</td>
+<td class="col-group-header">3</td>
+<td><span class="badge-alert">0</span> <i class="fas fa-arrow-down trend-down"></i></td>
+<td class="col-group-header">5</td>
+<td>5 <i class="fas fa-minus trend-stable"></i></td>
+<td class="col-group-header">4.0</td>
+<td><span class="badge-success">5.7</span> <i class="fas fa-arrow-up trend-up"></i></td>
+</tr>
+<tr>
+<td class="col-exec">TOTAL / PROMEDIO</td>
+<td>150</td>
+<td>269</td>
+<td>$238.2</td>
+<td class="col-group-header">61</td>
+<td>16</td>
+<td class="col-group-header">5.8</td>
+<td>5.0</td>
+<td class="col-group-header">4.1</td>
+<td>3.8</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="stat-card" data-object="true" id="fabric-obj-1-1775575910708">
-<div class="stat-value">18.9%</div>
-<div class="stat-label">Margen Bruto</div>
-<div class="stat-change">+2.3%</div>
-</div>
-<div class="stat-card" data-object="true" id="fabric-obj-2-1775575910708">
-<div class="stat-value">$19.58M</div>
-<div class="stat-label">Margen Operacional</div>
-<div class="stat-change">+12.8%</div>
-</div>
-<div class="stat-card" data-object="true" id="fabric-obj-3-1775575910709">
-<div class="stat-value">44%</div>
-<div class="stat-label">I+C del Total</div>
-<div class="stat-change negative">-1.2%</div>
+<div class="legend-container">
+<div class="legend-item"><div class="dot green"></div><span>Mejora significativa</span></div>
+<div class="legend-item"><div class="dot red"></div><span>Alerta crítica</span></div>
+<div class="legend-item"><div class="dot blue"></div><span>Top en Ingresos</span></div>
 </div>
 </div>
 </div>
-<div class="bottom-info">
-<div class="info-left">
-<div class="info-item">
-<i class="fas fa-building"></i>
-<span>Área: Finanzas / FP&amp;A</span>
-</div>
-<div class="info-item">
-<i class="fas fa-user"></i>
-<span>Elaborado por: Equipo de Análisis</span>
-</div>
-</div>
-<div class="info-right">
-<div class="date-badge">
-<i class="fas fa-calendar-alt"></i>
-                    07-Abr-2026
-</div>
-<div class="footer-text">Confidencial</div>
-</div>
-</div>
-</div>
- 
-</body></html>
-
-
-
-
-
-    
  
 </body></html>
