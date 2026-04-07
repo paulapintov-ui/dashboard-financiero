@@ -1,348 +1,1831 @@
 <!DOCTYPE html>
-<html data-theme="light" lang="es" style=""><head>
+<html lang="en" data-theme="light" style=""><head>
 <meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Ranking de Ejecutivos por Ingresos</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Roboto:wght@400;500&display=swap%22 rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+
     body {
+
         margin: 0;
+
         padding: 0;
+
         overflow: hidden;
-        background: #ffffff;
-        font-family: 'Montserrat', sans-serif;
+
+        background-color: white;
+
     }
+
     .slide-container {
-        position: relative;
+
         width: 1280px;
+
         height: 720px;
-        overflow: hidden;
-        background: #ffffff;
-    }
-    .header {
-        position: absolute;
-        top: 30px;
-        left: 40px;
-        width: 1200px;
-        height: 60px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        z-index: 10;
-    }
-    .title-section {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-    }
-    .title-icon {
-        width: 48px;
-        height: 48px;
-        background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
-    }
-    .title-icon i {
-        color: white;
-        font-size: 22px;
-    }
-    .title-text {
-        color: #1e293b;
-        font-size: 26px;
-        font-weight: 700;
-        line-height: 1.2;
-    }
-    .title-sub {
-        color: #64748b;
-        font-size: 14px;
-        margin-top: 2px;
-    }
- 
-    .total-badge {
-        background: #f1f5f9;
-        border: 1px solid #e2e8f0;
-        border-radius: 8px;
-        padding: 8px 16px;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-    }
-    .badge-label {
-        font-size: 10px;
-        color: #64748b;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        font-weight: 600;
-    }
-    .badge-value {
-        font-size: 18px;
-        font-weight: 700;
-        color: #1e293b;
-    }
-    .main-content {
-        position: absolute;
-        top: 110px;
-        left: 40px;
-        width: 1200px;
-        height: 570px;
-        display: flex;
-        gap: 30px;
-    }
-    .chart-panel {
-        flex: 1;
-        background: white;
-        border-radius: 16px;
-        border: 1px solid #e2e8f0;
-        padding: 30px 60px 25px 30px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-        display: flex;
-        flex-direction: column;
-    }
-    .side-panel {
-        width: 320px;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-    }
-    .chart-wrapper {
-        flex: 1;
+
         position: relative;
-        width: 100%;
-        min-height: 0;
+
+        overflow: hidden;
+
+        background-color: white;
+
     }
-    .insight-card {
-        background: #f8fafc;
-        border-radius: 12px;
-        padding: 16px;
-        border-left: 4px solid #3b82f6;
-    }
-    .insight-card.warning {
-        border-left-color: #ef4444;
-        background: #fef2f2;
-    }
-    .insight-header {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        margin-bottom: 8px;
-    }
-    .insight-title {
-        font-size: 13px;
-        font-weight: 700;
-        color: #1e293b;
-    }
-    .insight-text {
-        font-size: 12px;
-        color: #475569;
-        line-height: 1.5;
-    }
- 
-    .top-performer-card {
-        background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
-        border-radius: 12px;
-        padding: 20px;
-        color: white;
-        margin-top: auto;
-    }
- 
-    .tp-label {
-        font-size: 11px;
-        opacity: 0.8;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 5px;
-    }
- 
-    .tp-name {
-        font-size: 20px;
-        font-weight: 700;
-        margin-bottom: 10px;
-    }
- 
-    .tp-stat {
-        display: flex;
-        justify-content: space-between;
-        padding-top: 10px;
-        border-top: 1px solid rgba(255,255,255,0.2);
-    }
-    .tp-stat-item {
-        text-align: center;
-    }
-    .tp-stat-val {
-        font-size: 16px;
-        font-weight: 700;
-    }
-    .tp-stat-lbl {
-        font-size: 10px;
-        opacity: 0.7;
+
+    .slide-container * {
+
+        box-sizing: border-box;
+
     }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
 </head>
-<body style="">
+<body style="user-select: none;">
 <div class="slide-container">
+<!-- Header -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; left: 64px; top: 32px; width: 1152px; height: 64px;" id="fabric-obj-0-1775576183984">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 28px; font-weight: 700; color: #1a1a1a; margin-bottom: 4px;">
+<span style="color: #2563eb;">Análisis por Línea de Negocio</span> | Estados de Resultados 2026
+</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; color: #64748b;">
+
+        Desglose de las principales líneas de negocio con análisis de tendencias mensuales y KPIs
+</div>
+</div>
+<!-- Panel 1: I+C -->
+<div data-object="true" data-object-type="shape" style="position: absolute; left: 64px; top: 110px; width: 374px; height: 260px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px;" id="fabric-obj-1-1775576183986">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+<div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; font-weight: 600; color: #1a1a1a;">I+C</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 11px; color: #64748b;">Ingeniería y Construcción</div>
+</div>
+<div style="background-color: #2563eb; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600;">
+
+            44%
+</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">Ingresos:</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #1a1a1a;">$67.2M</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">EBITDA:</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #1a1a1a;">$7.05M</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">Pico:</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #1a1a1a;">Julio ($11.6M)</div>
+</div>
+<div style="height: 100px; position: relative;">
+<canvas id="chartIC" width="305" height="90" style="display: block; box-sizing: border-box; height: 100px; width: 339.8px;"></canvas>
+</div>
+</div>
+<!-- Panel 2: Hotelería -->
+<div data-object="true" data-object-type="shape" style="position: absolute; left: 453px; top: 110px; width: 374px; height: 260px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px;" id="fabric-obj-2-1775576183987">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+<div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; font-weight: 600; color: #1a1a1a;">Hotelería</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 11px; color: #64748b;">Operaciones Hotel</div>
+</div>
+<div style="background-color: #10b981; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600;">
+
+            20%
+</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">Ingresos:</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #1a1a1a;">$29.9M</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">EBITDA:</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #1a1a1a;">$13.95M</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">Estabilidad:</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #10b981;">Alta</div>
+</div>
+<div style="height: 100px; position: relative;">
+<canvas id="chartHotel" width="305" height="90" style="display: block; box-sizing: border-box; height: 100px; width: 339.8px;"></canvas>
+</div>
+</div>
+<!-- Panel 3: Habitacional -->
+<div data-object="true" data-object-type="shape" style="position: absolute; left: 842px; top: 110px; width: 374px; height: 260px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px;" id="fabric-obj-3-1775576183987">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+<div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; font-weight: 600; color: #1a1a1a;">Habitacional</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 11px; color: #64748b;">Proyectos Residenciales</div>
+</div>
+<div style="background-color: #f59e0b; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600;">
+
+            17%
+</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">Ingresos:</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #1a1a1a;">$25.5M</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">EBITDA:</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #1a1a1a;">$1.6M</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">Q4:</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #f59e0b;">Fuerte</div>
+</div>
+<div style="height: 100px; position: relative;">
+<canvas id="chartHabitacional" width="305" height="90" style="display: block; box-sizing: border-box; height: 100px; width: 339.8px;"></canvas>
+</div>
+</div>
+<!-- Panel 4: Servicios Hoteleros -->
+<div data-object="true" data-object-type="shape" style="position: absolute; left: 64px; top: 385px; width: 374px; height: 260px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px;" id="fabric-obj-4-1775576183988">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+<div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; font-weight: 600; color: #1a1a1a;">Servicios Hoteleros</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 11px; color: #64748b;">Operaciones de Servicios</div>
+</div>
+<div style="background-color: #8b5cf6; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600;">
+
+            12%
+</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">Ingresos:</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #1a1a1a;">$18.96M</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">EBITDA:</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #1a1a1a;">$6.69M</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">Recuperación:</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #10b981;">Gradual</div>
+</div>
+<div style="height: 100px; position: relative;">
+<canvas id="chartServicios" width="305" height="90" style="display: block; box-sizing: border-box; height: 100px; width: 339.8px;"></canvas>
+</div>
+</div>
+<!-- Panel 5: Rental -->
+<div data-object="true" data-object-type="shape" style="position: absolute; left: 453px; top: 385px; width: 374px; height: 260px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px;" id="fabric-obj-5-1775576183988">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+<div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; font-weight: 600; color: #1a1a1a;">Rental</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 11px; color: #64748b;">Alquiler de Equipos</div>
+</div>
+<div style="background-color: #ef4444; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600;">
+
+            2.2%
+</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">Ingresos:</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #1a1a1a;">$3.37M</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">EBITDA:</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #1a1a1a;">$1.53M</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">Estabilidad:</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #10b981;">Alta</div>
+</div>
+<div style="height: 100px; position: relative;">
+<canvas id="chartRental" width="305" height="90" style="display: block; box-sizing: border-box; height: 100px; width: 339.8px;"></canvas>
+</div>
+</div>
+<!-- Panel 6: Venta Modular -->
+<div data-object="true" data-object-type="shape" style="position: absolute; left: 842px; top: 385px; width: 374px; height: 260px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px;" id="fabric-obj-6-1775576183988">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+<div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; font-weight: 600; color: #1a1a1a;">Venta Modular</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 11px; color: #64748b;">Venta de Módulos</div>
+</div>
+<div style="background-color: #f59e0b; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600;">
+
+            2.3%
+</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">Ingresos:</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #1a1a1a;">$3.47M</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">EBITDA:</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #ef4444;">-$25.7K</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #64748b;">Estado:</div>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 600; color: #ef4444;">Pérdida</div>
+</div>
+<div style="height: 100px; position: relative;">
+<canvas id="chartModular" width="305" height="90" style="display: block; box-sizing: border-box; height: 100px; width: 339.8px;"></canvas>
+</div>
+</div>
+<script>
+
+    const chartOptions = (color, precision = 1) => ({
+
+        responsive: true,
+
+        maintainAspectRatio: false,
+
+        plugins: {
+
+            legend: { display: false },
+
+            datalabels: {
+
+                display: true,
+
+                align: 'top',
+
+                offset: 2,
+
+                formatter: (value) => value > 0 || value < 0 ? value.toFixed(precision) + 'M' : '',
+
+                font: { size: 9, weight: '600' },
+
+                color: '#1a1a1a'
+
+            }
+
+        },
+
+        scales: {
+
+            x: { 
+
+                grid: { display: false },
+
+                ticks: { font: { size: 9 } }
+
+            },
+
+            y: { 
+
+                grid: { display: true, color: '#f1f5f9' },
+
+                ticks: { display: false }
+
+            }
+
+        }
+
+    });
+ 
+    // Chart.js configuration for I+C
+
+    new Chart(document.getElementById('chartIC').getContext('2d'), {
+
+        type: 'line',
+
+        data: {
+
+            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+
+            datasets: [{
+
+                data: [1.97, 2.47, 2.52, 2.33, 4.21, 9.41, 11.57, 9.86, 8.06, 6.38, 4.02, 4.41],
+
+                borderColor: '#2563eb',
+
+                backgroundColor: 'rgba(37, 99, 235, 0.1)',
+
+                fill: true,
+
+                tension: 0.4,
+
+                pointRadius: 3,
+
+                pointBackgroundColor: '#2563eb'
+
+            }]
+
+        },
+
+        options: chartOptions('#2563eb'),
+
+        plugins: [ChartDataLabels]
+
+    });
+ 
+    // Chart.js configuration for Hotelería
+
+    new Chart(document.getElementById('chartHotel').getContext('2d'), {
+
+        type: 'line',
+
+        data: {
+
+            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+
+            datasets: [{
+
+                data: [2.54, 2.27, 2.59, 2.26, 2.27, 2.53, 2.53, 2.38, 2.51, 2.63, 2.61, 2.78],
+
+                borderColor: '#10b981',
+
+                backgroundColor: 'rgba(16, 185, 129, 0.1)',
+
+                fill: true,
+
+                tension: 0.4,
+
+                pointRadius: 3,
+
+                pointBackgroundColor: '#10b981'
+
+            }]
+
+        },
+
+        options: chartOptions('#10b981'),
+
+        plugins: [ChartDataLabels]
+
+    });
+ 
+    // Chart.js configuration for Habitacional
+
+    new Chart(document.getElementById('chartHabitacional').getContext('2d'), {
+
+        type: 'line',
+
+        data: {
+
+            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+
+            datasets: [{
+
+                data: [1.25, 0.97, 0.70, 1.26, 1.45, 1.58, 1.67, 1.16, 2.97, 4.52, 4.86, 3.11],
+
+                borderColor: '#f59e0b',
+
+                backgroundColor: 'rgba(245, 158, 11, 0.1)',
+
+                fill: true,
+
+                tension: 0.4,
+
+                pointRadius: 3,
+
+                pointBackgroundColor: '#f59e0b'
+
+            }]
+
+        },
+
+        options: chartOptions('#f59e0b'),
+
+        plugins: [ChartDataLabels]
+
+    });
+ 
+    // Chart.js configuration for Servicios Hoteleros
+
+    new Chart(document.getElementById('chartServicios').getContext('2d'), {
+
+        type: 'line',
+
+        data: {
+
+            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+
+            datasets: [{
+
+                data: [2.04, 1.95, 2.28, 1.42, 1.32, 1.66, 1.49, 1.49, 1.34, 1.30, 1.19, 1.48],
+
+                borderColor: '#8b5cf6',
+
+                backgroundColor: 'rgba(139, 92, 246, 0.1)',
+
+                fill: true,
+
+                tension: 0.4,
+
+                pointRadius: 3,
+
+                pointBackgroundColor: '#8b5cf6'
+
+            }]
+
+        },
+
+        options: chartOptions('#8b5cf6'),
+
+        plugins: [ChartDataLabels]
+
+    });
+ 
+    // Chart.js configuration for Rental
+
+    new Chart(document.getElementById('chartRental').getContext('2d'), {
+
+        type: 'line',
+
+        data: {
+
+            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+
+            datasets: [{
+
+                data: [0.60, 0.31, 0.24, 0.24, 0.24, 0.24, 0.24, 0.24, 0.25, 0.25, 0.25, 0.26],
+
+                borderColor: '#ef4444',
+
+                backgroundColor: 'rgba(239, 68, 68, 0.1)',
+
+                fill: true,
+
+                tension: 0.4,
+
+                pointRadius: 3,
+
+                pointBackgroundColor: '#ef4444'
+
+            }]
+
+        },
+
+        options: chartOptions('#ef4444', 2),
+
+        plugins: [ChartDataLabels]
+
+    });
+ 
+    // Chart.js configuration for Venta Modular
+
+    new Chart(document.getElementById('chartModular').getContext('2d'), {
+
+        type: 'line',
+
+        data: {
+
+            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+
+            datasets: [{
+
+                data: [0.81, 0.16, 0.35, 0.25, 0.35, 0, 0.35, 0.25, 0.35, 0.25, 0.10, 0.25],
+
+                borderColor: '#f59e0b',
+
+                backgroundColor: 'rgba(245, 158, 11, 0.1)',
+
+                fill: true,
+
+                tension: 0.4,
+
+                pointRadius: 3,
+
+                pointBackgroundColor: '#f59e0b'
+
+            }]
+
+        },
+
+        options: chartOptions('#f59e0b'),
+
+        plugins: [ChartDataLabels]
+
+    });
+</script>
+</div>
+ 
+</body></html>
+
+ 
+ 
+<!DOCTYPE html>
+<html lang="es" data-theme="light" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Análisis Financiero EE.RR. 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500&display=swap%22 rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+        body {
+
+            margin: 0;
+
+            padding: 0;
+
+            overflow: hidden;
+
+            background: #f5f5f5;
+
+            font-family: 'Montserrat', sans-serif;
+
+        }
+
+        .slide-container {
+
+            position: relative;
+
+            width: 1280px;
+
+            height: 720px;
+
+            overflow: hidden;
+
+            background: #ffffff;
+
+            border: 1px solid #e5e7eb;
+
+        }
+
+        .background-pattern {
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            background: 
+
+                radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+
+                radial-gradient(circle at 80% 20%, rgba(34, 197, 94, 0.05) 0%, transparent 50%);
+
+            opacity: 0.5;
+
+        }
+
+        .grid-overlay {
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            background-image: 
+
+                linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+
+                linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+
+            background-size: 50px 50px;
+
+            opacity: 0.3;
+
+        }
+
+        .main-content {
+
+            position: absolute;
+
+            top: 50%;
+
+            left: 50%;
+
+            transform: translate(-50%, -50%);
+
+            width: 100%;
+
+            max-width: 1200px;
+
+            z-index: 10;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+        }
+
+        .header-section {
+
+            text-align: center;
+
+            margin-bottom: 40px;
+
+            width: 100%;
+
+        }
+
+        .company-logo {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 15px;
+
+            margin-bottom: 30px;
+
+        }
+
+        .logo-icon {
+
+            width: 60px;
+
+            height: 60px;
+
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+
+            border-radius: 12px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+
+        }
+
+        .logo-icon i {
+
+            color: white;
+
+            font-size: 28px;
+
+        }
+
+        .logo-text {
+
+            color: #1f2937;
+
+            font-size: 24px;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+
+        }
+
+        .logo-text span {
+
+            color: #2563eb;
+
+            font-weight: 800;
+
+        }
+
+        .main-title {
+
+            font-size: 48px;
+
+            font-weight: 800;
+
+            color: #1f2937;
+
+            margin-bottom: 15px;
+
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+            letter-spacing: 0.5px;
+
+        }
+
+        .subtitle {
+
+            font-size: 20px;
+
+            color: #4b5563;
+
+            font-weight: 400;
+
+            margin-bottom: 30px;
+
+        }
+
+        .highlight-box {
+
+            background: rgba(255, 255, 255, 0.95);
+
+            border: 2px solid #e5e7eb;
+
+            border-radius: 12px;
+
+            padding: 15px 40px;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 20px;
+
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+
+        }
+
+        .highlight-icon {
+
+            width: 50px;
+
+            height: 50px;
+
+            background: rgba(59, 130, 246, 0.1);
+
+            border-radius: 10px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+        .highlight-icon i {
+
+            color: #2563eb;
+
+            font-size: 24px;
+
+        }
+
+        .highlight-text {
+
+            color: #374151;
+
+            font-size: 16px;
+
+            font-weight: 600;
+
+        }
+
+        .highlight-value {
+
+            color: #2563eb;
+
+            font-size: 20px;
+
+            font-weight: 800;
+
+        }
+
+        .stats-row {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 20px;
+
+            margin-top: 20px;
+
+            width: 100%;
+
+        }
+
+        .stat-card {
+
+            background: rgba(255, 255, 255, 0.95);
+
+            border: 1px solid #e5e7eb;
+
+            border-radius: 12px;
+
+            padding: 25px 10px;
+
+            text-align: center;
+
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+
+            width: 230px; /* Slightly wider to prevent text overflow */
+
+            flex-shrink: 0;
+
+        }
+
+        .stat-value {
+
+            font-size: 32px;
+
+            font-weight: 700;
+
+            color: #1f2937;
+
+            margin-bottom: 8px;
+
+            white-space: nowrap;
+
+            overflow: hidden;
+
+            text-overflow: ellipsis;
+
+        }
+
+        .stat-label {
+
+            font-size: 11px;
+
+            color: #6b7280;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 8px;
+
+        }
+
+        .stat-change {
+
+            font-size: 14px;
+
+            color: #10b981;
+
+            font-weight: 600;
+
+        }
+
+        .stat-change.negative {
+
+            color: #ef4444;
+
+        }
+
+        .bottom-info {
+
+            position: absolute;
+
+            bottom: 30px;
+
+            left: 50px;
+
+            right: 50px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+        }
+
+        .info-left {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 25px;
+
+        }
+
+        .info-item {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            color: #4b5563;
+
+            font-size: 14px;
+
+        }
+
+        .info-item i {
+
+            color: #2563eb;
+
+        }
+
+        .info-right {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 20px;
+
+        }
+
+        .date-badge {
+
+            background: rgba(59, 130, 246, 0.1);
+
+            border: 1px solid rgba(59, 130, 246, 0.3);
+
+            border-radius: 20px;
+
+            padding: 8px 16px;
+
+            color: #1f2937;
+
+            font-size: 14px;
+
+            font-weight: 500;
+
+        }
+
+        .footer-text {
+
+            color: #6b7280;
+
+            font-size: 12px;
+
+        }
+
+        .floating-elements {
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            overflow: hidden;
+
+            pointer-events: none;
+
+        }
+
+        .floating-circle {
+
+            position: absolute;
+
+            border-radius: 50%;
+
+            background: rgba(59, 130, 246, 0.05);
+
+            animation: float 8s ease-in-out infinite;
+
+        }
+
+        @keyframes float {
+
+            0%, 100% { transform: translateY(0px) scale(1); }
+
+            50% { transform: translateY(-30px) scale(1.1); }
+
+        }
+</style>
+</head>
+<body style="user-select: none;">
+<div class="slide-container">
+<div class="background-pattern"></div>
+<div class="grid-overlay"></div>
+<div class="floating-elements">
+<div class="floating-circle" style="width: 120px; height: 120px; top: 10%; left: 8%; animation-delay: 0s;"></div>
+<div class="floating-circle" style="width: 100px; height: 100px; top: 15%; right: 12%; animation-delay: 1.5s;"></div>
+<div class="floating-circle" style="width: 150px; height: 150px; bottom: 15%; left: 18%; animation-delay: 3s;"></div>
+</div>
+<div class="main-content">
+<div class="header-section">
+<div class="company-logo">
+<div class="logo-icon">
+<i class="fas fa-chart-line"></i>
+</div>
+<div class="logo-text">FINANZAS<span> CORP</span></div>
+</div>
+<h1 class="main-title">Análisis Financiero EE.RR. 2026</h1>
+<p class="subtitle">Estados de Resultados 2026 (REAL + FCST) en CLP - Tendencias, desviaciones y oportunidades</p>
+<div class="highlight-box">
+<div class="highlight-icon">
+<i class="fas fa-chart-pie"></i>
+</div>
+<div style="text-align: left;">
+<div class="highlight-text">Ingresos Totales 2026</div>
+<div class="highlight-value">$152.875M</div>
+</div>
+</div>
+</div>
+<div class="stats-row">
+<div class="stat-card" data-object="true" id="fabric-obj-0-1775575910706" contenteditable="true" style="cursor: text; outline: none; caret-color: rgb(0, 0, 0); user-select: text;">
+<div class="stat-value">$26.99M</div>
+<div class="stat-label">EBITDA</div>
+<div class="stat-change">+17.7%</div>
+</div>
+<div class="stat-card" data-object="true" id="fabric-obj-1-1775575910708">
+<div class="stat-value">18.9%</div>
+<div class="stat-label">Margen Bruto</div>
+<div class="stat-change">+2.3%</div>
+</div>
+<div class="stat-card" data-object="true" id="fabric-obj-2-1775575910708">
+<div class="stat-value">$19.58M</div>
+<div class="stat-label">Margen Operacional</div>
+<div class="stat-change">+12.8%</div>
+</div>
+<div class="stat-card" data-object="true" id="fabric-obj-3-1775575910709">
+<div class="stat-value">44%</div>
+<div class="stat-label">I+C del Total</div>
+<div class="stat-change negative">-1.2%</div>
+</div>
+</div>
+</div>
+<div class="bottom-info">
+<div class="info-left">
+<div class="info-item">
+<i class="fas fa-building"></i>
+<span>Área: Finanzas / FP&amp;A</span>
+</div>
+<div class="info-item">
+<i class="fas fa-user"></i>
+<span>Elaborado por: Equipo de Análisis</span>
+</div>
+</div>
+<div class="info-right">
+<div class="date-badge">
+<i class="fas fa-calendar-alt"></i>
+
+                    07-Abr-2026
+</div>
+<div class="footer-text">Confidencial</div>
+</div>
+</div>
+</div>
+ 
+</body></html>
+
+ 
+<!DOCTYPE html>
+<html lang="es" data-theme="light" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Resumen Ejecutivo 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500&display=swap%22 rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+        body {
+
+            margin: 0;
+
+            padding: 0;
+
+            overflow: hidden;
+
+            background: #f5f5f5;
+
+            font-family: 'Montserrat', sans-serif;
+
+        }
+
+        .slide-container {
+
+            position: relative;
+
+            width: 1280px;
+
+            height: 720px;
+
+            overflow: hidden;
+
+            background: #ffffff;
+
+        }
+
+        .main-content {
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            padding: 30px 40px;
+
+            display: flex;
+
+            flex-direction: column;
+
+        }
+
+        .header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 20px;
+
+        }
+
+        .title-section {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+        }
+
+        .title-icon {
+
+            width: 50px;
+
+            height: 50px;
+
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+
+            border-radius: 10px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+
+        }
+
+        .title-icon i {
+
+            color: white;
+
+            font-size: 24px;
+
+        }
+
+        .title-text {
+
+            color: #1f2937;
+
+            font-size: 32px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.5px;
+
+            line-height: 1.2;
+
+        }
+
+        .title-subtitle {
+
+            color: #6b7280;
+
+            font-size: 14px;
+
+            margin-top: 2px;
+
+        }
+
+        .header-right {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+        }
+
+        .status-badge {
+
+            background: rgba(34, 197, 94, 0.1);
+
+            border: 1px solid rgba(34, 197, 94, 0.3);
+
+            border-radius: 20px;
+
+            padding: 6px 14px;
+
+            color: #22c55e;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+        }
+
+        .date-badge {
+
+            background: rgba(59, 130, 246, 0.1);
+
+            border: 1px solid rgba(59, 130, 246, 0.2);
+
+            border-radius: 20px;
+
+            padding: 6px 14px;
+
+            color: #3b82f6;
+
+            font-size: 14px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+        }
+
+        .content-grid {
+
+            display: grid;
+
+            grid-template-columns: 560px 1fr;
+
+            gap: 25px;
+
+            margin-bottom: 20px;
+
+        }
+
+        .left-panel {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 12px;
+
+        }
+
+        .right-panel {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 12px;
+
+        }
+
+        .kpi-card {
+
+            background: rgba(255, 255, 255, 0.9);
+
+            border: 1px solid rgba(0, 0, 0, 0.08);
+
+            border-radius: 12px;
+
+            padding: 14px 18px;
+
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+        }
+
+        .kpi-icon {
+
+            width: 46px;
+
+            height: 46px;
+
+            border-radius: 10px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            flex-shrink: 0;
+
+        }
+
+        .kpi-icon.blue { background: rgba(59, 130, 246, 0.1); }
+
+        .kpi-icon.green { background: rgba(34, 197, 94, 0.1); }
+
+        .kpi-icon.orange { background: rgba(249, 115, 22, 0.1); }
+
+        .kpi-icon.purple { background: rgba(139, 92, 246, 0.1); }
+
+        .kpi-icon i { font-size: 18px; }
+
+        .kpi-icon.blue i { color: #3b82f6; }
+
+        .kpi-icon.green i { color: #22c55e; }
+
+        .kpi-icon.orange i { color: #f97316; }
+
+        .kpi-icon.purple i { color: #8b5cf6; }
+
+        .kpi-content {
+
+            flex: 1;
+
+        }
+
+        .kpi-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+        }
+
+        .kpi-label {
+
+            color: #6b7280;
+
+            font-size: 13px;
+
+            font-weight: 500;
+
+        }
+
+        .kpi-value {
+
+            color: #1f2937;
+
+            font-size: 26px;
+
+            font-weight: 700;
+
+            margin: 2px 0;
+
+        }
+
+        .kpi-change {
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 5px;
+
+        }
+
+        .kpi-change.positive { color: #22c55e; }
+
+        .kpi-change.negative { color: #ef4444; }
+
+        .chart-container {
+
+            background: rgba(255, 255, 255, 0.9);
+
+            border: 1px solid rgba(0, 0, 0, 0.08);
+
+            border-radius: 12px;
+
+            padding: 18px;
+
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+
+            height: 290px;
+
+            display: flex;
+
+            flex-direction: column;
+
+        }
+
+        .chart-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 12px;
+
+        }
+
+        .chart-title {
+
+            color: #1f2937;
+
+            font-size: 16px;
+
+            font-weight: 600;
+
+        }
+
+        .chart-subtitle {
+
+            color: #6b7280;
+
+            font-size: 11px;
+
+        }
+
+        .chart-wrapper {
+
+            flex: 1;
+
+            position: relative;
+
+            min-height: 0;
+
+        }
+
+        .insights-list {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 8px;
+
+        }
+
+        .insight-item {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            padding: 10px 15px;
+
+            background: rgba(255, 255, 255, 0.9);
+
+            border-radius: 8px;
+
+            border-left: 4px solid;
+
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+
+        }
+
+        .insight-item.warning { border-left-color: #f97316; }
+
+        .insight-item.success { border-left-color: #22c55e; }
+
+        .insight-item.info { border-left-color: #3b82f6; }
+
+        .insight-icon {
+
+            width: 24px;
+
+            height: 24px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            flex-shrink: 0;
+
+        }
+
+        .insight-icon.warning { background: rgba(249, 115, 22, 0.1); color: #f97316; }
+
+        .insight-icon.success { background: rgba(34, 197, 94, 0.1); color: #22c55e; }
+
+        .insight-icon.info { background: rgba(59, 130, 246, 0.1); color: #3b82f6; }
+
+        .insight-text {
+
+            color: #4b5563;
+
+            font-size: 13px;
+
+            line-height: 1.3;
+
+        }
+
+        .stats-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 15px;
+
+        }
+
+        .stat-item {
+
+            text-align: center;
+
+            padding: 12px;
+
+            background: rgba(255, 255, 255, 0.9);
+
+            border-radius: 10px;
+
+            border: 1px solid rgba(0, 0, 0, 0.06);
+
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+
+        }
+
+        .stat-value {
+
+            color: #1f2937;
+
+            font-size: 18px;
+
+            font-weight: 700;
+
+        }
+
+        .stat-label {
+
+            color: #6b7280;
+
+            font-size: 11px;
+
+            margin: 2px 0;
+
+        }
+
+        .progress-bar {
+
+            width: 100%;
+
+            height: 6px;
+
+            background: rgba(0, 0, 0, 0.08);
+
+            border-radius: 3px;
+
+            margin-top: 4px;
+
+            overflow: hidden;
+
+        }
+
+        .progress-fill { height: 100%; border-radius: 3px; }
+
+        .progress-fill.blue { background: #3b82f6; }
+
+        .progress-fill.green { background: #22c55e; }
+
+        .progress-fill.orange { background: #f97316; }
+
+        .progress-fill.purple { background: #8b5cf6; }
+</style>
+</head>
+<body>
+<div class="slide-container">
+<div class="main-content">
 <div class="header">
 <div class="title-section">
 <div class="title-icon">
-<i class="fas fa-trophy"></i>
+<i class="fas fa-chart-line"></i>
 </div>
 <div>
-<div class="title-text">Ranking de Ejecutivos por Ingresos</div>
-<div class="title-sub">Desempeño comercial YTD 2026 (Ingresos Mensuales)</div>
+<div class="title-text">Resumen Ejecutivo 2026</div>
+<div class="title-subtitle">Métricas clave del año - Análisis de desempeño financiero</div>
 </div>
 </div>
-<div class="total-badge">
-<span class="badge-label">Total Ingresos</span>
-<span class="badge-value">$238.2M</span>
+<div class="header-right">
+<div class="status-badge">
+<i class="fas fa-check-circle"></i>
+<span>En progreso</span>
+</div>
+<div class="date-badge">
+<i class="fas fa-calendar-alt"></i>
+<span>07-Abr-2026</span>
 </div>
 </div>
-<div class="main-content">
-<div class="chart-panel">
+</div>
+<div class="content-grid">
+<div class="left-panel">
+<div class="kpi-card">
+<div class="kpi-icon blue"><i class="fas fa-dollar-sign"></i></div>
+<div class="kpi-content">
+<div class="kpi-header">
+<div class="kpi-label">Ingresos Totales</div>
+<div class="kpi-change positive"><i class="fas fa-arrow-up"></i><span>+12.5%</span></div>
+</div>
+<div class="kpi-value">$152.875M</div>
+<div style="display: flex; justify-content: space-between; margin-top: 4px;">
+<span style="color: #6b7280; font-size: 11px;">vs 2025</span>
+<span style="color: #22c55e; font-size: 11px; font-weight: 600;">+16.8M</span>
+</div>
+</div>
+</div>
+<div class="kpi-card">
+<div class="kpi-icon green"><i class="fas fa-chart-pie"></i></div>
+<div class="kpi-content">
+<div class="kpi-header">
+<div class="kpi-label">EBITDA</div>
+<div class="kpi-change positive"><i class="fas fa-arrow-up"></i><span>+17.7%</span></div>
+</div>
+<div class="kpi-value">$26.987M</div>
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+<span style="color: #6b7280; font-size: 11px;">Margen: 17.7%</span>
+<div class="progress-bar" style="width: 80px;"><div class="progress-fill green" style="width: 77%;"></div></div>
+</div>
+</div>
+</div>
+<div class="kpi-card">
+<div class="kpi-icon orange"><i class="fas fa-percentage"></i></div>
+<div class="kpi-content">
+<div class="kpi-header">
+<div class="kpi-label">Margen Bruto</div>
+<div class="kpi-change positive"><i class="fas fa-arrow-up"></i><span>+2.3%</span></div>
+</div>
+<div class="kpi-value">18.9%</div>
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+<span style="color: #6b7280; font-size: 11px;">Meta: 20%</span>
+<div class="progress-bar" style="width: 80px;"><div class="progress-fill orange" style="width: 95%;"></div></div>
+</div>
+</div>
+</div>
+<div class="kpi-card">
+<div class="kpi-icon purple"><i class="fas fa-building"></i></div>
+<div class="kpi-content">
+<div class="kpi-header">
+<div class="kpi-label">I+C % del Total</div>
+<div class="kpi-change negative"><i class="fas fa-arrow-down"></i><span>-1.2%</span></div>
+</div>
+<div class="kpi-value">44%</div>
+<div style="display: flex; justify-content: space-between; margin-top: 4px;">
+<span style="color: #6b7280; font-size: 11px;">$67.2M</span>
+<span style="color: #ef4444; font-size: 11px; font-weight: 600;">-2.5M</span>
+</div>
+</div>
+</div>
+</div>
+<div class="right-panel">
+<div class="chart-container">
+<div class="chart-header">
+<div>
+<div class="chart-title">Evolución Mensual de Ingresos</div>
+<div class="chart-subtitle">Tendencia 2026 - Pico en julio ($18.3M)</div>
+</div>
+<div style="display: flex; gap: 10px; align-items: center;">
+<span style="color: #6b7280; font-size: 11px;">
+<i class="fas fa-circle" style="color: #3b82f6; margin-right: 5px;"></i>Ingresos
+</span>
+</div>
+</div>
 <div class="chart-wrapper">
-<canvas id="rankingChart" width="682" height="461" style="display: block; box-sizing: border-box; height: 512.8px; width: 757.8px;"></canvas>
+<canvas id="revenueChart" width="519" height="185" style="display: block; box-sizing: border-box; height: 206.5px; width: 576.8px;"></canvas>
 </div>
 </div>
-<div class="side-panel">
-<div class="insight-card">
-<div class="insight-header">
-<i class="fas fa-chart-pie" style="color: #3b82f6;"></i>
-<div class="insight-title">Concentración</div>
-</div>
+<div class="insights-list">
+<div class="insight-item success">
+<div class="insight-icon success"><i class="fas fa-check" style="font-size: 12px;"></i></div>
 <div class="insight-text">
-                    El 89.5% de los ingresos totales se concentra en los dos principales ejecutivos (Mauricio y Katryna).
+<strong>Q2-Q3 fuerte:</strong> Crecimiento sostenido de mayo a agosto, con pico en julio ($18.3M)
 </div>
 </div>
-<div class="insight-card warning">
-<div class="insight-header">
-<i class="fas fa-exclamation-triangle" style="color: #ef4444;"></i>
-<div class="insight-title">Bajo Desempeño</div>
-</div>
+<div class="insight-item warning">
+<div class="insight-icon warning"><i class="fas fa-exclamation-triangle" style="font-size: 12px;"></i></div>
 <div class="insight-text">
-                    El 60% del equipo comercial (3 ejecutivos) genera solo el 10.5% de los ingresos totales.
+<strong>Q1 débil:</strong> Febrero ($8.5M) y abril ($8.1M) con ingresos por debajo del promedio
 </div>
 </div>
-<div class="top-performer-card">
-<div class="tp-label">Líder en Ingresos</div>
-<div class="tp-name">Mauricio Ortiz</div>
-<div class="tp-stat">
-<div class="tp-stat-item">
-<div class="tp-stat-val">$129.6M</div>
-<div class="tp-stat-lbl">Mensual</div>
-</div>
-<div class="tp-stat-item">
-<div class="tp-stat-val">54.4%</div>
-<div class="tp-stat-lbl">Share</div>
+<div class="insight-item info">
+<div class="insight-icon info"><i class="fas fa-info-circle" style="font-size: 12px;"></i></div>
+<div class="insight-text">
+<strong>I+C dominante:</strong> Representa 44% de ingresos totales, riesgo de concentración
 </div>
 </div>
 </div>
+</div>
+</div>
+<div class="stats-grid">
+<div class="stat-item">
+<div class="stat-value">$19.58M</div>
+<div class="stat-label">Margen Operacional</div>
+<div style="font-size: 11px; color: #22c55e; font-weight: 600;">+12.8%</div>
+</div>
+<div class="stat-item">
+<div class="stat-value">$28.99M</div>
+<div class="stat-label">Margen Bruto</div>
+<div style="font-size: 11px; color: #22c55e; font-weight: 600;">+18.9%</div>
+</div>
+<div class="stat-item">
+<div class="stat-value">$6.77M</div>
+<div class="stat-label">Depreciación</div>
+<div style="font-size: 11px; color: #ef4444; font-weight: 600;">-5.2%</div>
+</div>
+<div class="stat-item">
+<div class="stat-value">$9.41M</div>
+<div class="stat-label">GAV</div>
+<div style="font-size: 11px; color: #f97316; font-weight: 600;">6.2% ventas</div>
 </div>
 </div>
 </div>
 <script>
-    const ctx = document.getElementById('rankingChart').getContext('2d');
-    const labels = ['Mauricio Ortiz', 'Katryna Moncada', 'Geraldine Salzar', 'Jean Pierre', 'Francisco Gil'];
-    const values = [129.6, 83.6, 12.3, 10.6, 2.1];
-    const total = values.reduce((a, b) => a + b, 0);
-    const percentages = values.map(v => ((v / total) * 100).toFixed(1) + '%');
- 
-    const data = {
-        labels: labels,
-        datasets: [{
-            data: values,
-            backgroundColor: [
-                '#1e3a8a', 
-                '#3b82f6', 
-                '#94a3b8', 
-                '#cbd5e1', 
-                '#e2e8f0'  
-            ],
-            borderRadius: 6,
-            barPercentage: 0.7,
-            categoryPercentage: 0.8
-        }]
-    };
- 
-    const config = {
-        type: 'bar',
-        data: data,
-        options: {
-            indexAxis: 'y',
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: { display: false },
-                tooltip: {
-                    enabled: true,
-                    backgroundColor: '#1e293b',
-                    padding: 12,
-                    cornerRadius: 8,
-                    callbacks: {
-                        label: function(context) {
-                            return '$' + context.raw + 'M';
-                        }
-                    }
-                },
-                datalabels: {
-                    anchor: 'end',
-                    align: 'end',
-                    formatter: (value, context) => {
-                        return '$' + value + 'M (' + percentages[context.dataIndex] + ')';
-                    },
-                    color: '#1e293b',
-                    font: {
-                        weight: 'bold',
-                        size: 12,
-                        family: 'Montserrat'
-                    },
-                    offset: 8
-                }
+
+        const ctx = document.getElementById('revenueChart').getContext('2d');
+
+        new Chart(ctx, {
+
+            type: 'line',
+
+            data: {
+
+                labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+
+                datasets: [{
+
+                    label: 'Ingresos',
+
+                    data: [9.57, 8.50, 9.04, 8.08, 10.15, 15.72, 18.34, 15.61, 15.96, 15.56, 13.51, 12.86],
+
+                    borderColor: '#3b82f6',
+
+                    backgroundColor: 'rgba(59, 130, 246, 0.08)',
+
+                    borderWidth: 2.5,
+
+                    fill: true,
+
+                    tension: 0.4,
+
+                    pointBackgroundColor: '#3b82f6',
+
+                    pointBorderColor: '#fff',
+
+                    pointBorderWidth: 2,
+
+                    pointRadius: 4,
+
+                    pointHoverRadius: 6
+
+                }]
+
             },
-            scales: {
-                x: {
-                    grid: {
-                        color: '#f1f5f9',
-                        drawBorder: false
+
+            options: {
+
+                responsive: true,
+
+                maintainAspectRatio: false,
+
+                plugins: { legend: { display: false } },
+
+                scales: {
+
+                    y: {
+
+                        beginAtZero: true,
+
+                        grid: { color: 'rgba(0, 0, 0, 0.05)' },
+
+                        ticks: { color: '#6b7280', font: { size: 10 } }
+
                     },
-                    ticks: {
-                        callback: function(value) {
-                            return '$' + value + 'M';
-                        },
-                        font: { size: 11 },
-                        color: '#64748b'
-                    },
-                    max: 165
-                },
-                y: {
-                    grid: { display: false },
-                    ticks: {
-                        padding: 15,
-                        font: {
-                            size: 13,
-                            weight: '600',
-                            family: 'Montserrat'
-                        },
-                        color: '#1e293b'
+
+                    x: {
+
+                        grid: { display: false },
+
+                        ticks: { color: '#6b7280', font: { size: 10 } }
+
                     }
+
                 }
-            },
-            layout: {
-                padding: { right: 100, left: 0 }
+
             }
-        },
-        plugins: [ChartDataLabels]
-    };
- 
-    new Chart(ctx, config);
+
+        });
 </script>
+</div>
  
 </body></html>
+
