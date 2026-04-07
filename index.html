@@ -2,9 +2,11 @@
 <html data-theme="light" lang="es" style=""><head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Tabla Comparativa Detallada de Ejecutivos</title>
+<title>Ranking de Ejecutivos por Ingresos</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Roboto:wght@400;500&display=swap%22 rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
 <style>
     * {
         margin: 0;
@@ -30,9 +32,9 @@
         top: 30px;
         left: 40px;
         width: 1200px;
-        height: 70px;
+        height: 60px;
         display: flex;
-        justify-content: flex-start;
+        justify-content: space-between;
         align-items: center;
         z-index: 10;
     }
@@ -42,10 +44,10 @@
         gap: 15px;
     }
     .title-icon {
-        width: 54px;
-        height: 54px;
+        width: 48px;
+        height: 48px;
         background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-        border-radius: 12px;
+        border-radius: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -53,165 +55,138 @@
     }
     .title-icon i {
         color: white;
-        font-size: 24px;
+        font-size: 22px;
     }
     .title-text {
         color: #1e293b;
-        font-size: 32px;
+        font-size: 26px;
         font-weight: 700;
-        line-height: 1.1;
+        line-height: 1.2;
     }
     .title-sub {
         color: #64748b;
-        font-size: 16px;
-        margin-top: 4px;
-        font-weight: 500;
+        font-size: 14px;
+        margin-top: 2px;
+    }
+ 
+    .total-badge {
+        background: #f1f5f9;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 8px 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    .badge-label {
+        font-size: 10px;
+        color: #64748b;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-weight: 600;
+    }
+    .badge-value {
+        font-size: 18px;
+        font-weight: 700;
+        color: #1e293b;
     }
     .main-content {
         position: absolute;
-        top: 125px;
+        top: 110px;
         left: 40px;
         width: 1200px;
-        height: 560px;
+        height: 570px;
+        display: flex;
+        gap: 30px;
+    }
+    .chart-panel {
+        flex: 1;
+        background: white;
+        border-radius: 16px;
+        border: 1px solid #e2e8f0;
+        padding: 30px 60px 25px 30px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        display: flex;
+        flex-direction: column;
+    }
+    .side-panel {
+        width: 320px;
         display: flex;
         flex-direction: column;
         gap: 15px;
     }
-    .table-container {
-        background: white;
-        border-radius: 16px;
-        border: 1px solid #e2e8f0;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-        overflow: hidden;
+    .chart-wrapper {
+        flex: 1;
+        position: relative;
         width: 100%;
+        min-height: 0;
     }
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        font-size: 14px;
-        table-layout: fixed;
-    }
-    th {
+    .insight-card {
         background: #f8fafc;
-        color: #475569;
-        font-weight: 700;
-        text-align: center;
-        padding: 14px 6px;
-        border-bottom: 2px solid #e2e8f0;
-        border-right: 1px solid #e2e8f0;
-        text-transform: uppercase;
-        font-size: 10.5px;
-        letter-spacing: 0.5px;
-        word-wrap: break-word;
+        border-radius: 12px;
+        padding: 16px;
+        border-left: 4px solid #3b82f6;
     }
- 
-    th:last-child {
-        border-right: none;
-    }
-    th.col-exec {
-        text-align: left;
-        padding-left: 24px;
-        width: 200px;
-        background: #f8fafc;
-    }
-    td {
-        padding: 14px 6px;
-        border-bottom: 1px solid #f1f5f9;
-        border-right: 1px solid #f1f5f9;
-        color: #1e293b;
-        text-align: center;
-        font-weight: 500;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
- 
-    td:last-child {
-        border-right: none;
-    }
-    td.col-exec {
-        text-align: left;
-        padding-left: 24px;
-        font-weight: 700;
-        background: #ffffff;
-        white-space: normal;
-        line-height: 1.2;
-    }
-    tr:last-child td {
-        border-bottom: none;
-        background: #f8fafc;
-        font-weight: 800;
-    }
-    .trend-up {
-        color: #16a34a;
-        font-size: 11px;
-        margin-left: 4px;
-    }
-    .trend-down {
-        color: #ef4444;
-        font-size: 11px;
-        margin-left: 4px;
-    }
-    .trend-stable {
-        color: #94a3b8;
-        font-size: 11px;
-        margin-left: 4px;
-    }
-    .highlight-cell {
-        background: rgba(59, 130, 246, 0.05);
-        color: #1e40af;
-        font-weight: 700;
-    }
-    .badge-alert {
+    .insight-card.warning {
+        border-left-color: #ef4444;
         background: #fef2f2;
-        color: #ef4444;
-        padding: 3px 8px;
-        border-radius: 6px;
-        font-weight: 700;
-        font-size: 12px;
-        border: 1px solid #fecaca;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
     }
-    .badge-success {
-        background: #f0fdf4;
-        color: #16a34a;
-        padding: 3px 8px;
-        border-radius: 6px;
-        font-weight: 700;
-        font-size: 12px;
-        border: 1px solid #bbf7d0;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .col-group-header {
-        border-left: 1px solid #cbd5e1;
-    }
-    .legend-container {
-        display: flex;
-        justify-content: flex-end;
-        gap: 25px;
-        padding-right: 15px;
-        margin-top: 10px;
-    }
-    .legend-item {
+    .insight-header {
         display: flex;
         align-items: center;
         gap: 8px;
+        margin-bottom: 8px;
+    }
+    .insight-title {
+        font-size: 13px;
+        font-weight: 700;
+        color: #1e293b;
+    }
+    .insight-text {
         font-size: 12px;
-        color: #64748b;
-        font-weight: 500;
+        color: #475569;
+        line-height: 1.5;
     }
-    .dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
+ 
+    .top-performer-card {
+        background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+        border-radius: 12px;
+        padding: 20px;
+        color: white;
+        margin-top: auto;
     }
-    .dot.green { background: #22c55e; }
-    .dot.red { background: #ef4444; }
-    .dot.blue { background: #3b82f6; }
+ 
+    .tp-label {
+        font-size: 11px;
+        opacity: 0.8;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 5px;
+    }
+ 
+    .tp-name {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+ 
+    .tp-stat {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 10px;
+        border-top: 1px solid rgba(255,255,255,0.2);
+    }
+    .tp-stat-item {
+        text-align: center;
+    }
+    .tp-stat-val {
+        font-size: 16px;
+        font-weight: 700;
+    }
+    .tp-stat-lbl {
+        font-size: 10px;
+        opacity: 0.7;
+    }
 </style>
 </head>
 <body style="">
@@ -219,120 +194,155 @@
 <div class="header">
 <div class="title-section">
 <div class="title-icon">
-<i class="fas fa-chart-line"></i>
+<i class="fas fa-trophy"></i>
 </div>
 <div>
-<div class="title-text">Tabla Comparativa Detallada de Ejecutivos</div>
-<div class="title-sub">Consolidado de KPIs Comerciales (2S 2025 vs YTD 2026)</div>
+<div class="title-text">Ranking de Ejecutivos por Ingresos</div>
+<div class="title-sub">Desempeño comercial YTD 2026 (Ingresos Mensuales)</div>
 </div>
+</div>
+<div class="total-badge">
+<span class="badge-label">Total Ingresos</span>
+<span class="badge-value">$238.2M</span>
 </div>
 </div>
 <div class="main-content">
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th class="col-exec" rowspan="2">Ejecutivo</th>
-<th colspan="3">Volumen Comercial</th>
-<th class="col-group-header" colspan="2">Adquisición (Clientes Nuevos)</th>
-<th class="col-group-header" colspan="2">Retención (Meses Prom.)</th>
-<th class="col-group-header" colspan="2">Valor (Pricing)</th>
-</tr>
-<tr>
-<th>Clientes</th>
-<th>Contratos</th>
-<th>Ingresos ($M)</th>
-<th class="col-group-header">2S 2025</th>
-<th>YTD 2026</th>
-<th class="col-group-header">2025</th>
-<th>2026</th>
-<th class="col-group-header">2S 2025</th>
-<th>2026</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="col-exec">Mauricio Ortiz</td>
-<td>33</td>
-<td>63</td>
-<td class="highlight-cell">$129.6</td>
-<td class="col-group-header">9</td>
-<td>3 <i class="fas fa-arrow-down trend-down"></i></td>
-<td class="col-group-header">7</td>
-<td><span class="badge-success">10</span> <i class="fas fa-arrow-up trend-up"></i></td>
-<td class="col-group-header">4.2</td>
-<td>3.9 <i class="fas fa-arrow-down trend-down"></i></td>
-</tr>
-<tr>
-<td class="col-exec">Katryna Moncada</td>
-<td><span class="badge-success">82</span></td>
-<td><span class="badge-success">161</span></td>
-<td class="highlight-cell">$83.6</td>
-<td class="col-group-header">25</td>
-<td>9 <i class="fas fa-arrow-down trend-down"></i></td>
-<td class="col-group-header">6</td>
-<td>6 <i class="fas fa-minus trend-stable"></i></td>
-<td class="col-group-header">4.4</td>
-<td>4.4 <i class="fas fa-minus trend-stable"></i></td>
-</tr>
-<tr>
-<td class="col-exec">Jean Pierre</td>
-<td>8</td>
-<td>15</td>
-<td>$10.6</td>
-<td class="col-group-header">4</td>
-<td>4 <i class="fas fa-minus trend-stable"></i></td>
-<td class="col-group-header">5</td>
-<td>4 <i class="fas fa-arrow-down trend-down"></i></td>
-<td class="col-group-header">3.6</td>
-<td><span class="badge-success">5.0</span> <i class="fas fa-arrow-up trend-up"></i></td>
-</tr>
-<tr>
-<td class="col-exec">Geraldine Salazar</td>
-<td>24</td>
-<td>26</td>
-<td>$12.3</td>
-<td class="col-group-header">20</td>
-<td><span class="badge-alert">0</span> <i class="fas fa-arrow-down trend-down"></i></td>
-<td class="col-group-header">6</td>
-<td><span class="badge-alert">0</span> <i class="fas fa-arrow-down trend-down"></i></td>
-<td class="col-group-header">4.4</td>
-<td><span class="badge-alert">0.0</span> <i class="fas fa-arrow-down trend-down"></i></td>
-</tr>
-<tr>
-<td class="col-exec">Francisco Gil</td>
-<td>3</td>
-<td>4</td>
-<td>$2.1</td>
-<td class="col-group-header">3</td>
-<td><span class="badge-alert">0</span> <i class="fas fa-arrow-down trend-down"></i></td>
-<td class="col-group-header">5</td>
-<td>5 <i class="fas fa-minus trend-stable"></i></td>
-<td class="col-group-header">4.0</td>
-<td><span class="badge-success">5.7</span> <i class="fas fa-arrow-up trend-up"></i></td>
-</tr>
-<tr>
-<td class="col-exec">TOTAL / PROMEDIO</td>
-<td>150</td>
-<td>269</td>
-<td>$238.2</td>
-<td class="col-group-header">61</td>
-<td>16</td>
-<td class="col-group-header">5.8</td>
-<td>5.0</td>
-<td class="col-group-header">4.1</td>
-<td>3.8</td>
-</tr>
-</tbody>
-</table>
+<div class="chart-panel">
+<div class="chart-wrapper">
+<canvas id="rankingChart" width="682" height="461" style="display: block; box-sizing: border-box; height: 512.8px; width: 757.8px;"></canvas>
 </div>
-<div class="legend-container">
-<div class="legend-item"><div class="dot green"></div><span>Mejora significativa</span></div>
-<div class="legend-item"><div class="dot red"></div><span>Alerta crítica</span></div>
-<div class="legend-item"><div class="dot blue"></div><span>Top en Ingresos</span></div>
+</div>
+<div class="side-panel">
+<div class="insight-card">
+<div class="insight-header">
+<i class="fas fa-chart-pie" style="color: #3b82f6;"></i>
+<div class="insight-title">Concentración</div>
+</div>
+<div class="insight-text">
+                    El 89.5% de los ingresos totales se concentra en los dos principales ejecutivos (Mauricio y Katryna).
+</div>
+</div>
+<div class="insight-card warning">
+<div class="insight-header">
+<i class="fas fa-exclamation-triangle" style="color: #ef4444;"></i>
+<div class="insight-title">Bajo Desempeño</div>
+</div>
+<div class="insight-text">
+                    El 60% del equipo comercial (3 ejecutivos) genera solo el 10.5% de los ingresos totales.
+</div>
+</div>
+<div class="top-performer-card">
+<div class="tp-label">Líder en Ingresos</div>
+<div class="tp-name">Mauricio Ortiz</div>
+<div class="tp-stat">
+<div class="tp-stat-item">
+<div class="tp-stat-val">$129.6M</div>
+<div class="tp-stat-lbl">Mensual</div>
+</div>
+<div class="tp-stat-item">
+<div class="tp-stat-val">54.4%</div>
+<div class="tp-stat-lbl">Share</div>
 </div>
 </div>
 </div>
+</div>
+</div>
+</div>
+<script>
+    const ctx = document.getElementById('rankingChart').getContext('2d');
+    const labels = ['Mauricio Ortiz', 'Katryna Moncada', 'Geraldine Salzar', 'Jean Pierre', 'Francisco Gil'];
+    const values = [129.6, 83.6, 12.3, 10.6, 2.1];
+    const total = values.reduce((a, b) => a + b, 0);
+    const percentages = values.map(v => ((v / total) * 100).toFixed(1) + '%');
+ 
+    const data = {
+        labels: labels,
+        datasets: [{
+            data: values,
+            backgroundColor: [
+                '#1e3a8a', 
+                '#3b82f6', 
+                '#94a3b8', 
+                '#cbd5e1', 
+                '#e2e8f0'  
+            ],
+            borderRadius: 6,
+            barPercentage: 0.7,
+            categoryPercentage: 0.8
+        }]
+    };
+ 
+    const config = {
+        type: 'bar',
+        data: data,
+        options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    enabled: true,
+                    backgroundColor: '#1e293b',
+                    padding: 12,
+                    cornerRadius: 8,
+                    callbacks: {
+                        label: function(context) {
+                            return '$' + context.raw + 'M';
+                        }
+                    }
+                },
+                datalabels: {
+                    anchor: 'end',
+                    align: 'end',
+                    formatter: (value, context) => {
+                        return '$' + value + 'M (' + percentages[context.dataIndex] + ')';
+                    },
+                    color: '#1e293b',
+                    font: {
+                        weight: 'bold',
+                        size: 12,
+                        family: 'Montserrat'
+                    },
+                    offset: 8
+                }
+            },
+            scales: {
+                x: {
+                    grid: {
+                        color: '#f1f5f9',
+                        drawBorder: false
+                    },
+                    ticks: {
+                        callback: function(value) {
+                            return '$' + value + 'M';
+                        },
+                        font: { size: 11 },
+                        color: '#64748b'
+                    },
+                    max: 165
+                },
+                y: {
+                    grid: { display: false },
+                    ticks: {
+                        padding: 15,
+                        font: {
+                            size: 13,
+                            weight: '600',
+                            family: 'Montserrat'
+                        },
+                        color: '#1e293b'
+                    }
+                }
+            },
+            layout: {
+                padding: { right: 100, left: 0 }
+            }
+        },
+        plugins: [ChartDataLabels]
+    };
+ 
+    new Chart(ctx, config);
+</script>
  
 </body></html>
-
